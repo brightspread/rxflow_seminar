@@ -31,7 +31,7 @@ final class HomeCoordinatorImpl: HomeCoordinator {
     }
     
     func start() -> UIViewController {
-        let homeVM = HomeViewModel(coordinator: self)
+        let homeVM = HomeViewModel(/*coordinator: self*/)
         let homeVC = HomeViewController(viewModel: homeVM)
         return homeVC
     }
