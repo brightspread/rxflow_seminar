@@ -15,10 +15,12 @@ final class HomeFlow: Flow {
         homeVC
     }
     
+    private let navigation: UINavigationController
     private let homeVC: HomeViewController
     private let homeVM: HomeViewModel
     
-    init() {
+    init(navigation: UINavigationController) {
+        self.navigation = navigation
         self.homeVM = HomeViewModel()
         self.homeVC = HomeViewController(viewModel: homeVM)
     }
@@ -32,10 +34,14 @@ final class HomeFlow: Flow {
         case .homeIsRequired:
             return navigateToHome()
         case .homeDetailIsRequired:
-            return .none
+            return navigateToHomeDetail()
         case .moreIsRequired:
-            return .none
+            return navigateToMore()
         case .homeIsCompleted:
+            return .none
+        case .homeDetailIsCompleted:
+            return .none
+        case .moreIsCompleted:
             return .none
         }
     }
@@ -46,5 +52,34 @@ final class HomeFlow: Flow {
         ))
     }
     
+    private func navigateToHomeDetail() -> FlowContributors {
+        let homeDetailFlow = HomeDetailFlow()
+
+        Flows.use(homeDetailFlow, when: .created) { root in
+            self.navigation.pushViewController(root, animated: true)
+        }
+        
+        return .one(flowContributor:
+                .contribute(
+                    withNextPresentable: homeDetailFlow,
+                    withNextStepper: OneStepper(withSingleStep: HomeDetailStep.homeDetailIsRequired)
+                )
+        )
+    }
     
+    private func navigateToMore() -> FlowContributors {
+        let moreFlow = MoreFlow()
+
+        Flows.use(moreFlow, when: .created) { root in
+            self.navigation.pushViewController(root, animated: true)
+        }
+        
+        return .one(flowContributor:
+                .contribute(
+                    withNextPresentable: moreFlow,
+                    withNextStepper: OneStepper(withSingleStep: MoreStep.moreIsRequired)
+                )
+        )
+    }
+
 }

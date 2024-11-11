@@ -6,13 +6,19 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import RxFlow
+import FlowStep
 
 enum HomeDetailViewAction {
     case dismiss
     case alertTapped
 }
 
-public final class HomeDetailViewModel {
+public final class HomeDetailViewModel: Stepper {
+    public let steps = PublishRelay<Step>()
+    
     
     weak var coordinator: (HomeDetailCoordinator)?
 
@@ -24,9 +30,11 @@ public final class HomeDetailViewModel {
     func send(action: HomeDetailViewAction) {
         switch action {
         case .dismiss:
-            coordinator?.finish()
+//            coordinator?.finish()
+            steps.accept(HomeDetailStep.homeDetailIsCompleted)
         case .alertTapped:
-            coordinator?.presentAlert("from HomeDetail")
+//            coordinator?.presentAlert("from HomeDetail")
+            steps.accept(RootStep.presentAlert("from HomeDetai"))
         }
     }
     
