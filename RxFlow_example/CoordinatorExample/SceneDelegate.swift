@@ -6,21 +6,40 @@
 //
 
 import UIKit
+import RxFlow
+import FlowStep
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var rootCoordinator = RootCoordinator()
+    private let rootCoordinator = RootCoordinator()
+    
+    private let flowCoordinator = FlowCoordinator()
+    private let disposeBag = DisposeBag()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
+        /*
         let navigation = rootCoordinator.navigation
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         
         rootCoordinator.start()
+         */
+        
+        let rootFlow = RootFlow()
+        flowCoordinator.coordinate(
+            flow: rootFlow,
+            with: OneStepper(withSingleStep: RootStep.rootIsRequired)
+        )
+        
+        Flows.use(rootFlow, when: .created) { root in
+            self.window?.rootViewController = root
+            self.window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

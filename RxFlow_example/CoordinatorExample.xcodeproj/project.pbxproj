@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B30590322CDF90BC000B512E /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = B30590312CDF90BC000B512E /* RxFlow */; };
+		B30590352CDF9144000B512E /* FlowStep in Frameworks */ = {isa = PBXBuildFile; productRef = B30590342CDF9144000B512E /* FlowStep */; };
 		B391A7F02CD63D4C00592080 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B391A7EF2CD63D4C00592080 /* SnapKit */; };
 		B391A7F32CD63D6800592080 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B391A7F22CD63D6800592080 /* Then */; };
 		B391A7FE2CD6425600592080 /* Coordinator in Frameworks */ = {isa = PBXBuildFile; productRef = B391A7FD2CD6425600592080 /* Coordinator */; };
@@ -79,6 +80,7 @@
 				B30590322CDF90BC000B512E /* RxFlow in Frameworks */,
 				B391A8012CD6426400592080 /* Home in Frameworks */,
 				B391A7F02CD63D4C00592080 /* SnapKit in Frameworks */,
+				B30590352CDF9144000B512E /* FlowStep in Frameworks */,
 				B391A8252CD72C8B00592080 /* More in Frameworks */,
 				B391A7F32CD63D6800592080 /* Then in Frameworks */,
 				B391A8042CD6469A00592080 /* Extension in Frameworks */,
@@ -149,6 +151,7 @@
 				B391A8032CD6469A00592080 /* Extension */,
 				B391A8242CD72C8B00592080 /* More */,
 				B30590312CDF90BC000B512E /* RxFlow */,
+				B30590342CDF9144000B512E /* FlowStep */,
 			);
 			productName = CoordinatorExample;
 			productReference = B391A7BA2CD5247F00592080 /* CoordinatorExample.app */;
@@ -240,6 +243,7 @@
 				B391A8022CD6469A00592080 /* XCLocalSwiftPackageReference "Extension" */,
 				B391A8232CD72C8B00592080 /* XCLocalSwiftPackageReference "More" */,
 				B30590302CDF90BC000B512E /* XCRemoteSwiftPackageReference "RxFlow" */,
+				B30590332CDF9144000B512E /* XCLocalSwiftPackageReference "FlowStep" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B391A7BB2CD5247F00592080 /* Products */;
@@ -597,6 +601,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		B30590332CDF9144000B512E /* XCLocalSwiftPackageReference "FlowStep" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = FlowStep;
+		};
 		B391A7FC2CD6425600592080 /* XCLocalSwiftPackageReference "Coordinator" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Coordinator;
@@ -647,6 +655,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B30590302CDF90BC000B512E /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		B30590342CDF9144000B512E /* FlowStep */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FlowStep;
 		};
 		B391A7EF2CD63D4C00592080 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

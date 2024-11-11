@@ -16,6 +16,8 @@ let package = Package(
     dependencies: [
         .package(path: "../Coordinator"),
         .package(path: "../Extension"),
+        .package(path: "../FlowStep"),
+        .package(url: "https://github.com/RxSwiftCommunity/RxFlow.git", from: "2.13.0"),
         .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.7.1"),
         .package(url: "https://github.com/devxoul/Then.git", from: "3.0.0"),
     ],
@@ -25,6 +27,8 @@ let package = Package(
             dependencies: [
                 "Extension",
                 "Coordinator",
+                "RxFlow",
+                "FlowStep",
                 "SnapKit",
                 "Then"
             ]
